@@ -1,0 +1,11 @@
+setwd("Path_to/MTS.txt")
+data1 <- read.table("MTS.txt",sep = "\t",header = TRUE)
+data2 <- read.table("MR.txt",sep = "\t",header = TRUE)
+data3 <- read.table("PTS1.txt",sep = "\t",header = TRUE)
+
+plot(data1[c("dS","dN")],col = rgb(240,194,162,maxColorValue =255),pch=17,xlim=c(0,1),ylim=c(0,1),bty="l",lwd=0.25,cex=2)
+par(new=TRUE)
+plot(data2[c("dS","dN")],col = rgb(236,224,147,maxColorValue =255),pch=17,xlim=c(0,1),ylim=c(0,1),bty="l",lwd=0.25,cex=2)
+par(new=TRUE)
+plot(data3[c("dS","dN")],col = rgb(181,79,79,maxColorValue =255),pch=17,xlim=c(0,1),ylim=c(0,1),bty="l",lwd=0.25,cex=2)
+abline(a=0,b=1,lty=5)
