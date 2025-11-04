@@ -8,5 +8,6 @@ df$ymax <- cumsum(df$fraction)
 df$ymin <- c(0, head(df$ymax, n=-1))
 inner_radius <- 500
 outer_radius <- 600
-p_diet_colored <- ggplot(df, aes(ymax=ymax, ymin=ymin, xmax=outer_radius, xmin=inner_radius, fill=Diet)) +geom_rect(colour = "white", size = 0.1) +coord_polar(theta = "y") +scale_fill_viridis_c(name = "Diet Value (0-100)", limits = c(0, 100),option = "magma") +theme_void() + theme(legend.position = "right", plot.title = element_text(hjust = 0.5, face = "bold")) +labs(title = paste("Circular Plot Colored by Diet Value (Total Slices:", num_slices, ")"))
-print(p_diet_colored)
+custom_colors <- c("#f7df87", "#84c3b7")
+p_diet_colored_ring_no_gap <- ggplot(df, aes(ymax=ymax, ymin=ymin, xmax=outer_radius, xmin=inner_radius, fill=Diet)) +geom_rect(colour = NA) + coord_polar(theta = "y") +scale_fill_gradientn(name = "Diet Value (0-100)", colors = custom_colors, limits = c(0, 100),breaks = c(0, 50, 100) ) +theme_void() + theme(legend.position = "right", plot.title = element_text(hjust = 0.5, face = "bold")) +labs(title = paste("Seamless Circular Plot Colored by Diet Value (Total Slices:", num_slices, ")"))
+print(p_diet_colored_ring_no_gap)
